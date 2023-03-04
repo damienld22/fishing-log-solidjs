@@ -1,9 +1,7 @@
-import {
-  StartServer,
-  createHandler,
-  renderAsync,
-} from "solid-start/entry-server";
+import { StartServer, createHandler, renderAsync } from 'solid-start/entry-server';
+import { Database } from './lib/database';
 
-export default createHandler(
-  renderAsync((event) => <StartServer event={event} />)
-);
+const database = Database.getInstance();
+database.init();
+
+export default createHandler(renderAsync((event) => <StartServer event={event} />));
